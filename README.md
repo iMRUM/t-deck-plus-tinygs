@@ -3,15 +3,15 @@
 
 [![TinyGS Stations](https://img.shields.io/badge/Ground%20Stations-3%20Ready-green)](https://tinygs.com/stations) [![Pull Request](https://img.shields.io/badge/Device-LILYGO®%20T--Deck%20Plus-blue)](https://lilygo.cc/products/t-deck-plus-1) [![MCU](https://img.shields.io/badge/MCU-ESP32--S3-red)](https://www.espressif.com/en/products/socs/esp32-s3) [![LoRa Module](https://img.shields.io/badge/LoRa%20Module-SX1262-orange)](https://www.semtech.com/products/wireless-rf/lora-connect/sx1262)
 
-> TinyGS satellite ground station on the **LilyGo T-Deck Plus ESP32-S3** with SX1262 LoRa module.
+> **This is a specialized fork for LilyGo T-Deck Plus support. For general TinyGS documentation, see the [original TinyGS repository](https://github.com/G4lile0/tinyGS) or [original README](README-ORIGINAL.md).**
 
 ##  Live Stations
 
 Our operational stations contributing to the global TinyGS network:
 
--   **[PiTAYA_gs_001](https://tinygs.com/station/PiTAYA_gs_001@393436548)** - Ariel, Israel 📍
--   **[PiTAYA_gs_002](https://tinygs.com/station/PiTAYA_gs_002@393436548)** - Haifa, Israel 📍
--   **[test_Intro2SDR_AU](https://tinygs.com/station/test_Intro2SDR_AU@393436548)** - Ariel University (Educational Demo) 📍
+-   **[PiTAYA_gs_001](https://tinygs.com/station/PiTAYA_gs_001@393436548)** - Ariel, Israel 
+-   **[PiTAYA_gs_002](https://tinygs.com/station/PiTAYA_gs_002@393436548)** - Haifa, Israel 
+-   **[test_Intro2SDR_AU](https://tinygs.com/station/test_Intro2SDR_AU@393436548)** - Ariel University, Israel (Educational Demo) 
 
 ##  Quick Start Guide
 
@@ -80,7 +80,7 @@ After successful upload, your T-Deck Plus will:
 -   [Add T-Deck Plus to board selection dropdown for ESP32-S3](https://github.com/G4lile0/tinyGS/commit/da861c42294cdeceebb34a8ca5e6ebde961d4492)
 -   [Add `lilygo_t_deck_plus_s3` build environment](https://github.com/G4lile0/tinyGS/commit/ebabc8cb8b3ebc27f36096e643eb0db1ea9b033c)
 
-## 🔗 Resources and Links
+## Resources and Links
 
 ### TinyGS Community
 
@@ -95,14 +95,14 @@ After successful upload, your T-Deck Plus will:
 -   **[LilyGo T-Deck Plus Official Repo](https://github.com/Xinyuan-LilyGO/T-Deck)** - Sample code and more detailed information about this board
 
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 -   **Prof. Ben-Moshe** (Ariel University) - Equipment provision, project motivation, and introduction to TinyGS and LoRa technologies and many more...
 -   **TinyGS Community** - Original project development and global satellite tracking network
 -   **[@G4lile0](https://github.com/G4lile0)** - TinyGS project creator and maintainer
 
 
-## 📜 License
+## License
 
 This project maintains the same license as the original TinyGS project:
 
