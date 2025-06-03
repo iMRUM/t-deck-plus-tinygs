@@ -1,118 +1,156 @@
+<p align="center">
+<img src="/doc/images/TinyGS_logo.png" width="600">
+</p>
 
-# TinyGS on LilyGo T-Deck Plus ESP32-S3
+TinyGS is an open network of Ground Stations distributed around the world to receive and operate LoRa satellites, weather probes and other flying objects, using cheap and versatile modules.
 
-[![TinyGS Stations](https://img.shields.io/badge/Ground%20Stations-3%20Ready-green)](https://tinygs.com/stations) [![Pull Request](https://img.shields.io/badge/Device-LILYGO®%20T--Deck%20Plus-blue)](https://lilygo.cc/products/t-deck-plus-1) [![MCU](https://img.shields.io/badge/MCU-ESP32--S3-red)](https://www.espressif.com/en/products/socs/esp32-s3) [![LoRa Module](https://img.shields.io/badge/LoRa%20Module-SX1262-orange)](https://www.semtech.com/products/wireless-rf/lora-connect/sx1262)
+# Hardware
 
-> TinyGS satellite ground station on the **LilyGo T-Deck Plus ESP32-S3** with SX1262 LoRa module.
+This project is based on ESP32 boards and currently it is compatible with sx126x and sx127x LoRa módules but we plan to support more radio módules in the future.
 
-##  Live Stations
+Currently we are officially supporting the following proven LoRa boards:
 
-Our operational stations contributing to the global TinyGS network:
+- **Heltec WiFi LoRa 32 V1 (433MHz &amp; 863-928MHz versions)**
+- **Heltec WiFi LoRa 32 V2 (433MHz &amp; 863-928MHz versions)**
+- **TTGO LoRa32 V1 (433MHz &amp; 868-915MHz versions)**
+- **TTGO LoRa32 V2 (433MHz &amp; 868-915MHz versions)**
+- **TTGO LoRa32 V2 (Manually swapped SX1267 to SX1278)**
+- **T-BEAM + OLED (433MHz &amp; 868-915MHz versions)**
+- **T-BEAM V1.0 + OLED**
+- **FOSSA 1W Ground Station (433MHz &amp; 868-915MHz versions)**
+- **ESP32 dev board + SX126X with crystal (Custom build, OLED optional)**
+- **ESP32 dev board + SX126X with TCXO (Custom build, OLED optional)**
+- **ESP32 dev board + SX127X (Custom build, OLED optional)**
+- **ESP32-S3 150–960Mhz - HELTEC LORA32 V3 SX1262**
+- **ESP32-S3 433Mhz Custom ESP32-S3 433MHz SX1278**
 
--   **[PiTAYA_gs_001](https://tinygs.com/station/PiTAYA_gs_001@393436548)** - Ariel, Israel 📍
--   **[PiTAYA_gs_002](https://tinygs.com/station/PiTAYA_gs_002@393436548)** - Haifa, Israel 📍
--   **[test_Intro2SDR_AU](https://tinygs.com/station/test_Intro2SDR_AU@393436548)** - Ariel University (Educational Demo) 📍
+However, any ESP32 board with sx126x or sx127x módule can be configured using templates. You can find more info about them [here](https://github.com/G4lile0/tinyGS/wiki/Board-Templates).
 
-##  Quick Start Guide
+# Install
 
-### Step 1: Install PlatformIO
+------
 
-Install PlatformIO Core via command line:
+#### Use our brand new web installer to setup your board for first time. Just go to https://installer.tinygs.com and follow the instructions there
 
-```bash
-# Install PlatformIO Core via pip
-pip install -U platformio
+-----
 
-# Verify installation
-pio --version
+The first time you flash your board you can use the [web installer](https://installer.tinygs.com) using Google Chrome web browser on Linux, Windows or MacOS. Follow instructions there.
 
-```
+You can also download the latest [release](https://github.com/G4lile0/tinyGS/releases) and flash it with PlatformIO. If you dont know PlatformIO here you have our [PlatformIO guide](https://github.com/G4lile0/tinyGS/wiki/Platformio).
 
-### Step 2: Clone and Build
+Later you can update your Ground Station via [local web OTA or auto update method](https://github.com/G4lile0/tinyGS/wiki/OTA-Update).
 
-```bash
-# Clone this repository
-git clone https://github.com/iMRUM/t-deck-plus-tinygs.git
-cd t-deck-plus-tinygs
+You can also use Arduino IDE, but is a longer and hard path, because you need to install all dependencies. [Arduino guide](https://github.com/G4lile0/tinyGS/wiki/Arduino-IDE)
 
-# Connect your T-Deck Plus via USB-C
-# The T-Deck Plus environment is already configured in platformio.ini
+# Configuration
 
-# Upload firmware
-pio run -e lilygo_t_deck_plus_s3 -t upload
+Check our wiki [configuration page](https://github.com/G4lile0/tinyGS/wiki/Ground-Station-configuration)
 
-```
+# Main data website
 
-### Step 3: Initial Configuration
+All data received by TinyGS Ground Stations are showed at our TinyGS website
 
-After successful upload, your T-Deck Plus will:
+[https://tinygs.com/](https://tinygs.com/)
 
-1.  **Boot up** and show TinyGS splash screen
-2.  **Create WiFi Access Point** named "My TinyGS" or "TinyGS-xxxxxx"
-3.  **Wait for configuration** via web interface
+At this web you can see:
 
-### Step 4: Web Configuration
+- [Ground Stations list](https://tinygs.com/stations)
+- [Supported satellites](https://tinygs.com/satellites)
+- [All data packets received by the community in real time](https://tinygs.com/packets)
 
-1.  **Connect to AP**: Join the "My TinyGS" WiFi network (usually no password)
-    
-2.  **Open Browser**: Navigate to `http://192.168.4.1/`
-    
-3.  **Configure Station**:
-    
-    -   **Ground Station Name**: Choose unique name (appears on global map)
-    -   **Board Type**: Select **"433MHz LilyGo T-Deck Plus SX1262"** from dropdown
-    -   **Location**: Enter latitude/longitude coordinates
-    -   **WiFi**: Your WiFi credentials for internet access
-    -   **MQTT**: Get credentials from [TinyGS Personal Bot](https://t.me/tinygs_personal_bot)
-4.  **Save Configuration**: Device will restart and connect to internet
-    
+At your personal area you can edit some parameters of your Ground Stations remotely.
 
-### Step 5: Verify Operation
+This is the main data recovery system, but we are developing an API to access data.
 
--   **Global Map**: Your station appears on [TinyGS map](https://tinygs.com/stations)
--   **Dashboard**: Access local dashboard at your device's IP address
--   **Radio Status**: Should show "READY" (green)
--   **Packets**: Begin receiving satellite telemetry automatically
+# Local data access
 
-### Commits Made
--   [Add T-Deck Plus ESP32-S3 board support with correct pin mappings (no OLED pins, pins 11 and 16 were configured for OLED pseudo-support)](https://github.com/G4lile0/tinyGS/commit/89acfcfc8a67934adc27844fd8d9255e2074b2e7)
--   [Add T-Deck Plus to ESP32-S3 board enum](https://github.com/G4lile0/tinyGS/commit/46611b95b09cfbc87426601bef6e5438e590102f)
--   [Add T-Deck Plus to board selection dropdown for ESP32-S3](https://github.com/G4lile0/tinyGS/commit/da861c42294cdeceebb34a8ca5e6ebde961d4492)
--   [Add `lilygo_t_deck_plus_s3` build environment](https://github.com/G4lile0/tinyGS/commit/ebabc8cb8b3ebc27f36096e643eb0db1ea9b033c)
+You can access to your Ground Station data and configuration via local website at your
 
-## 🔗 Resources and Links
+<p align="center">
+<img src="/doc/images/TinyGS_dashboard.png" width="300">
+</p>
 
-### TinyGS Community
+Also you can use the serial port of your board to see the basic console.
 
--   **[TinyGS Main Repository](https://github.com/G4lile0/tinyGS)** - Original project
--   **[TinyGS Website](https://tinygs.com/)** - Global network dashboard
--   **[TinyGS Telegram](https://t.me/joinchat/DmYSElZahiJGwHX6jCzB3Q)** - Community support
--   **[TinyGS Personal Bot](https://t.me/tinygs_personal_bot)** - Get MQTT credentials
+# TinyGS network architecture
 
-### Technical Documentation
+<p align="center">
+<img src="/doc/images/TinyGS_architecture.png" width="300">
+</p>
 
--   **[LilyGo T-Deck Plus Product Page](https://lilygo.cc/products/t-deck-plus-1)** - Device Specs
--   **[LilyGo T-Deck Plus Official Repo](https://github.com/Xinyuan-LilyGO/T-Deck)** - Sample code and more detailed information about this board
+# OTA update and Auto Tuning
+
+Once your Ground Station is alive and connected it can be automagically updated with the last version by the server via [OTA](https://github.com/G4lile0/tinyGS/wiki/OTA-Update).
+
+Also the Ground stations can be remote configured automagically ([Auto Tuning](https://github.com/G4lile0/tinyGS/wiki/Radio-Tuning-Guide)) to be able to hear the next satellite pass with the correct settings.
+
+Both systems are optional and you can opt-out at your Ground Station configuration, for example if you want to only support one specific satellite. But we recommend activating both to maintain the network health.
+
+# Community
+
+We are using Telegram as the main communication channel for the project. There are also two channels where you can subscribe and be updated automátically whenever a new packet is received by the network from the Satellite.
+
+- [Main community chat](https://t.me/joinchat/DmYSElZahiJGwHX6jCzB3Q)
+- [Data channel](https://t.me/tinyGS_Telemetry) station status and received packets
+- [Test channel](https://t.me/TinyGS_Test) RX packets by groundstations in test mode
+
+# History
+
+Initially TinyGS was born under the name ESP32 Fossa Groundstation, it was developed as a "weekend" project for the FossaSAT-1 LoRa satellite. We are passionate about space and created this project to be able to track and use the satellites and to learn and experiment about radio. Currently the network is open to any LoRa satellite and we also support other flying objects that have a compatible radio modulation with our hardware such as FSK, GFSK, MSK, GMSK, LoRa and OOK. And the project was renamed to TinyGS.
+
+Even though we have no relation with the Fossa team, they inspired this project and we are excited to support their new launched satellites into our network.
+
+This are the more important moments of the project:
+
+- Nov 28, 2019 ESP32-OLED-Fossa-GroundStation project born.
+- Dec 6, 2019 FossaSAT-1 deployed with an Electron rocket by Rocket Lab.
+- Dec 10,2019 YL3CT&#39;s GS receive the fist LoRa packet from FossaSAT-1
+- Sep 28,2020 6U Norby LoRa satellite is deployed with a Soyuz-2-1b launcher
+- Oct 11, 2020 KA9ETC&#39;s GS receive the first LoRa packet from Norby
+- Jan 24, 2021 3x V-R3x sat deployed with a Falcon-9
+- Jan 25, 2021 KA9ETC&#39;S GS receive the first LoRa packet from V-R3x
+- Feb 14, 2021 New name and web tinyGS.com with a new Beta firmware.
+
+# Contribute
+
+You can contribute to TinyGS by
+
+- Providing Pull Requests (Features, Proof of Concepts, Language files or Fixes)
+- Testing new released features and report issues
+- Contributing missing documentation for features and devices templates
+
+# Documentation
+
+Check our [wiki](https://github.com/G4lile0/tinyGS/wiki)!
+
+# Project dependencies
+
+This project relies on several third party libraries:
+
+- RadioLib
+- ArduinoJson
+- ESP8266\_SSD1306
+- IoTWebConf2
+- PubSubClient
+- ESPNTPClient
+- FailSafeMode
+
+You might also want to check out the other parts of this project:
+ * The web application: https://github.com/4m1g0/tinyGS-webapp
+ * The decoder modules: https://github.com/4m1g0/tinygs-decoders
+
+# TinyGS team
+
+The main TinyGS developer team is:
+
+- [4m1g0](https://github.com/4m1g0)
+- [G4lile0](https://github.com/G4lile0)
+- [gmag11](https://github.com/gmag11)
+
+# Contributors
+There are many people that contributed to this project in many different forms. We have a great active community in our Telegram group and we would really like to thank all the community support from contributions to the project to useful tips on the group. And, if your are still not part of it we would like to invite you to join it on [Telegram](https://t.me/joinchat/DmYSElZahiJGwHX6jCzB3Q).
 
 
-## 🙏 Acknowledgments
+# License
 
--   **Prof. Ben-Moshe** (Ariel University) - Equipment provision, project motivation, and introduction to TinyGS and LoRa technologies and many more...
--   **TinyGS Community** - Original project development and global satellite tracking network
--   **[@G4lile0](https://github.com/G4lile0)** - TinyGS project creator and maintainer
-
-
-## 📜 License
-
-This project maintains the same license as the original TinyGS project:
-
--   **GNU General Public License v3.0**
--   See LICENSE file for details
-
-----------
-
-**Built with ❤️ for the global space community**  
-
-----------
-
-_This guide represents a community contribution to expand TinyGS hardware support. For general TinyGS questions, please refer to the [main project documentation](https://github.com/G4lile0/tinyGS)._
+This program is licensed under GPL-3.0
